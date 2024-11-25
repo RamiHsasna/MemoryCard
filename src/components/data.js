@@ -1,22 +1,22 @@
 export default [
   {
     id: 1,
-    characterName: "Smoke",
     img: "../images/smoke.jpg",
+    characterName: "Smoke",
   },
   {
     id: 2,
-    characterName: "Mute",
     img: "../images/mute.jpg",
+    characterName: "Mute",
   },
   {
     id: 3,
-    characterName: "Rook",
     img: "../images/rook.jpg",
+    characterName: "Rook",
   },
   {
     id: 4,
-    characterName: "Doc",
     img: "../images/Doc.jpg",
+    characterName: "Doc",
   },
 ];

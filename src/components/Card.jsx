@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
 import "../Card.css";
 import PropTypes from "prop-types";
 
@@ -5,8 +7,7 @@ export default function Card(props) {
   return (
     <div className="card">
       <img
-        src={props.img}
-        alt="Avatar"
+        src={`../images/${props.img}`}
         style={{ width: "100%" }}
         className="card--image"
       />
