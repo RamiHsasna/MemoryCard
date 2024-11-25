@@ -3,15 +3,15 @@ import React from "react";
 import "../Card.css";
 import PropTypes from "prop-types";
 
-export default function Card(props) {
+export default function Card({ img, characterName, onCardClick }) {
   return (
-    <div className="card">
+    <div className="card" onClick={onCardClick}>
       <img
-        src={`../images/${props.img}`}
+        src={`../images/${img}`}
         style={{ width: "100%" }}
         className="card--image"
       />
-      <h2 className="card--characterTitle">{props.characterName}</h2>
+      <h2 className="card--characterTitle">{characterName}</h2>
     </div>
   );
 }
@@ -19,4 +19,5 @@ export default function Card(props) {
 Card.propTypes = {
   characterName: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  onCardClick: PropTypes.func,
 };
