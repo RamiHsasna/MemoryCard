@@ -19,4 +19,24 @@ export default [
     img: "../images/Doc.jpg",
     characterName: "Doc",
   },
+  {
+    id: 5,
+    img: "../images/bandit.png",
+    characterName: "Bandit",
+  },
+  {
+    id: 6,
+    img: "../images/Jager.png",
+    characterName: "Jager",
+  },
+  {
+    id: 7,
+    img: "../images/kapkan.png",
+    characterName: "Kapkan",
+  },
+  {
+    id: 8,
+    img: "../images/tachanka.png",
+    characterName: "Tachanka",
+  },
 ];

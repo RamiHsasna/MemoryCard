@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 export default function ScoreBoard(props) {
   return (
     <div className="scoreBoard--container">
-      <p>Score :{props.score} </p>
-      <p>Best Score :{props.bestScore} </p>
+      <p>Score : {props.score} </p>
+      <p>Best Score : {props.bestScore} </p>
     </div>
   );
 }

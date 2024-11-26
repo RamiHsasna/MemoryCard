@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
 import "./App.css";
 import data from "./components/data";
@@ -9,7 +9,25 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [cards, setCards] = useState(data);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    const generateRandomCards = () => {
+      const selectedCards = [];
+      //generate 4 random cards from the data folder each time the page reloads
+      const selectedIndices = new Set();
+      while (selectedCards.length < 4) {
+        const randomNumber = Math.floor(Math.random() * data.length);
+        if (!selectedIndices.has(randomNumber)) {
+          selectedCards.push(data[randomNumber]);
+          selectedIndices.add(randomNumber);
+        }
+      }
+      setCards(selectedCards);
+    };
+
+    generateRandomCards();
+  }, []);
 
   const shuffleCards = (cardsArray) => {
     const shuffled = [...cardsArray];
@@ -47,7 +65,7 @@ function App() {
             key={card.id}
             img={card.img}
             characterName={card.characterName}
-            onCardClick={() => handleCardClick(card.id)} // Pass the handler here
+            onCardClick={() => handleCardClick(card.id)}
           />
         ))}
       </div>
