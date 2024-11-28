@@ -1,3 +1,5 @@
+//TO-DO : Implement tests
+
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
@@ -10,11 +12,11 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [cards, setCards] = useState([]);
-
+  //TO-DO : Fetch images from an API endpoint
+  //generate 4 random cards from the data folder each time the page reloads
   useEffect(() => {
     const generateRandomCards = () => {
       const selectedCards = [];
-      //generate 4 random cards from the data folder each time the page reloads
       const selectedIndices = new Set();
       while (selectedCards.length < 4) {
         const randomNumber = Math.floor(Math.random() * data.length);
@@ -25,7 +27,6 @@ function App() {
       }
       setCards(selectedCards);
     };
-
     generateRandomCards();
   }, []);
 
@@ -37,13 +38,26 @@ function App() {
     }
     return shuffled;
   };
+  //TO-DO : Improve isGameOver logic and implement a modal for restarting the game
+  const isGameOver = (clickedCards, cards) => {
+    return clickedCards.length === cards.length + 1;
+  };
+
+  const restartGame = () => {
+    setBestScore(Math.max(score, bestScore));
+    setScore(0);
+    setClickedCards([]);
+  };
 
   const handleCardClick = (id) => {
     //if player selected an already selected card, player loses
+    if (isGameOver([...clickedCards, id], cards)) {
+      alert("Game over! You clicked all the cards");
+      restartGame();
+    }
     if (clickedCards.includes(id)) {
-      setBestScore(Math.max(score, bestScore));
-      setScore(0);
-      setClickedCards([]);
+      alert("Game over! You clicked a card twice");
+      restartGame();
     }
     //the card hasn't been selected before
     else {
